@@ -3,6 +3,8 @@ write raspbian stretch lite version 4.14 to a 8gb microsd.
 creat ssh file on sdcard's boot partition.
  $ sudo touch ssh
 
+-insert sdcard in raspberry pi.connect it to power supply and network cable
+
 update default password 
  $ passwd 
 
@@ -13,11 +15,22 @@ add static ip to /etc/dhcpcd.conf as below
  $ echo "routers=192.168.0.1" >> /etc/dhcpcd.conf
  $ sudo reboot
 
+// check the new ip address 
+ $ ifconfig
+// see if the ip address is correct
+
 expand root partition 
 
  $ sudo raspi-config --expand-rootfs
  $ sudo reboot
 
+// check partition sizes with 
+ $ df -h
+// look for root partition size.
+
 raspberry pi date is set to update automaticly throuth ntp and there is no configuration needed
 
+// check system date with 
+ $ date
+// see if its set to utc and is a correct date and time
 
