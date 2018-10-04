@@ -1,0 +1,14 @@
+restoring disk image on sdcard
+https://www.ev3dev.org/docs/tutorials/writing-sd-card-image-ubuntu-disk-image-writer/
+
+enabling ssh before booting your raspberry pi for first time
+https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0
+
+setting static ip address
+https://electrondust.com/2017/11/25/setting-raspberry-pi-wifi-static-ip-raspbian-stretch-lite/
+
+expanding raspberry pi file system
+https://elinux.org/RPi_Resize_Flash_Partitions
+
+working with raspberry date
+https://www.garron.me/en/linux/set-time-date-timezone-ntp-linux-shell-gnome-command-line.html
