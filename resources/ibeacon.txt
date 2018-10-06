@@ -1,0 +1,46 @@
+here i put the resources founded on internet for review
+
+beacon scanners writen in python and use default bluez for scanning
+bluez was pre installed on lite version of raspbian
+
+https://github.com/ashokgelal
+
+https://github.com/dburr/linux-ibeacon
+
+https://github.com/switchdoclabs/iBeacon-Scanner-
+
+https://github.com/roosnic1/iBeacon-Scanner-for-RPi
+
+https://www.jaredwolff.com/blog/get-started-with-bluetooth-low-energy/
+
+https://github.com/flyinactor91/RasPi-iBeacons
+this one sends beacon scans to azure database
+
+https://pypi.org/project/beacontools/
+
+https://libraries.io/github/roosnic1/iBeacon-Scanner-for-RPi
+https://www.jaredwolff.com/blog/get-started-with-bluetooth-low-energy/
+this one write data to json files and sends them to nodejs web application for preview
+
+https://www.switchdoc.com/2014/08/ibeacon-raspberry-pi-scanner-python/
+
+https://community.hortonworks.com/articles/108947/minifi-for-ble-bluetooth-low-energy-beacon-data-in.html
+
+https://github.com/evilsocket/bleah
+this one is not much related but it could be a good resource for features
+
+https://github.com/mrin/domoticz-bt-presence
+https://www.domoticz.com/forum/viewtopic.php?t=20577
+this one is a nice one but uses udp to send out data.
+
+
+beacon scanner project reviews
+
+https://dzone.com/articles/automatic-detection-ibeacon-0
+here they wrote that scanner is way faster than http poster so it holdes scanner back.
+
+
+resources for other tests
+https://opentutorials.org/module/1735/10562
+
+https://www.symcon.de/forum/threads/36533-Raspberry-Pi-Python-MQTT-BLE-BTL-Scanner
