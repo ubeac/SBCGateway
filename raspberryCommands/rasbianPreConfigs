@@ -12,7 +12,8 @@ add static ip to /etc/dhcpcd.conf as below
 
  $ echo "interface eth0" >> /etc/dhcpcd.conf 
  $ echo "static ip_address=192.168.0.70/24" >> /etc/dhcpcd.conf 
- $ echo "routers=192.168.0.1" >> /etc/dhcpcd.conf
+ $ echo "static routers=192.168.0.1" >> /etc/dhcpcd.conf
+ $ echo "static  domain_name_servers=192.168.0.1 8.8.8.8" >> /etc/dhcpcd.conf
  $ sudo reboot
 
 // check the new ip address 

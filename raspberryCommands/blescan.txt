@@ -1,0 +1,8 @@
+install bluez library
+ $sudo apt-get install python3-bluez
+
+sudo apt-get install libbluetooth-dev
+sudo apt-get install python3-dev
+sudo pip3 install PyBluez
+
+sudo pip3 install requests
