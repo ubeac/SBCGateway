@@ -3,25 +3,31 @@ import JsonPoster
 import datetime
 import time
 import _thread
+import configparser
 
 
-postAddress = 'http://hook.ubeac.io/B9CRRQmc'
-id='aslan'
-name='Rpi1'
-interval =1
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-
+#needed configurations read from config file
+postAddress = config['serverConfigurations']['postAddress']
+id = config['GatewayConfiguration']['id']
+name = config['GatewayConfiguration']['name']
+interval =config['GatewayConfiguration']['PostInterval']
+numScans = config['scannerConfiguration']['scanBuffer']
+# shared list used to exchange Beacon scans with post thread
 returnedList =[]
 
 scanner = blescan.bs(0)
-poster = JsonPoster.jp(id,name,postAddress)
+poster = JsonPoster.jp(id, name,postAddress)
 
 def scanProcess():
     while True:
-        returnedList.extend(scanner.doscan(1))
+        returnedList.extend(scanner.doscan(numScans))
 
 def postProcess():
     while True:
+        #temporary list used for exchange
         templist = returnedList.copy()
         returnedList.clear()
         poster.startPosting(templist)
@@ -34,5 +40,5 @@ try:
 except:
    print ("Error: unable to start thread")
 
-while 1:
+while True:
    pass
