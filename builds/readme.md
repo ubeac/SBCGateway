@@ -1,9 +1,9 @@
-#SBCGateway
+# SBCGateway
 
-##Pre requirments
+## Pre requirments
 For this project you can use raspberry pi 3 model B or B+.You can use raspberry pi zero w or any linux based pc or oneboard pc with network capabilities and bluetooth ver 4.
 
-##prepare raspberry pi
+## prepare raspberry pi
 At First you have to download raspbian lite from the official site.
 [Here's raspbian lite download page](https://www.raspberrypi.org/downloads/raspbian/)
 
@@ -59,7 +59,7 @@ raspberry pi date is set to update automaticly throuth ntp and there is no confi
  $ date
 // see if its set to utc and is a correct date and time
 
-##Installing needed libraries
+## Installing needed libraries
 For running this project you just need bluez and its python wraper.you need requests for posting the data to ubeac server.
 You can install needed libraries with commands below.
 
@@ -76,7 +76,7 @@ After installation is complete you can download the code for this project from g
  $ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/builds/blescan.py
  $ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/builds/config.ini
 
-##Config.ini file
+## Config.ini file
 
 postAddress is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 
