@@ -1,23 +1,47 @@
 ![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
 
-
 # SBCGateway
+Python gateway for ubeac service.
 
-## Pre requirments
-For this project you can use raspberry pi 3 model B or B+.You can use raspberry pi zero w or any linux based pc or oneboard pc with network capabilities and bluetooth ver 4.
+This a project to provide a gateway for bluetooth beacons to work with [uBeac](http://ui.ubeac.io) .At present it runs on linux only.I've mostly developed it using Raspberry pi, but it will also run on linux based systems.
 
-## prepare raspberry pi
+The scanner code is based on [Reliable Bluetooth LE (iBeacon) scanner](https://github.com/ashokgelal/iBeacon-Scanner).I've rewrite the project on python 3 and tested it on Raspberry pi 3 B.
+
+This project is designed to read iBeacon advertizments using a Bluetooth 4.0 dongle and sends readed data to [uBeac servers](http://ui.ubeac.io).
+
+*Be aware that this project is early in development!*
+## Getting Started
+These instructions will help you build a gateway from ground up.
+
+For this project you can use raspberry pi 3 model B or B+.You can use raspberry pi zero w or any linux based pc or oneboard pc with network capabilities and bluetooth ver 4 that runs linux.
+
+For this project you will need:
+* oneboard Pc or a pc capable of Internet Connectivity and bluetooth ver 4. I am using [Raspberry PI 3 model b](https://www.raspberrypi.org/products/)
+* Linux based operating system. I am using [raspbian lite](https://www.raspberrypi.org/downloads/raspbian/)]. current version is 4.14 June 2018
+* [python 3](https://www.python.org/). I am using python version 3.5.3.
+* [BlueZ api](http://www.bluez.org/). current version is 5.43.
+
+You can run this project on your own chosen envirement.I am going to give instructions for preparing a Raspberry pi to run this project on it.If you are using your own envirement you can skip this part.
+
+### preparing raspberry pi
+After you get your Raspberry pi you will need a micro sd card at least 4Gb in size.
+We are going to download latest raspbian image and write it to sdcard to get started with owr project.
+
 At First you have to download raspbian lite from the official site.
-[Here's raspbian lite download page](https://www.raspberrypi.org/downloads/raspbian/)
+[Here's raspbian lite download page](https://www.raspberrypi.org/downloads/raspbian/).
+The version I downloaded is [RASPBIAN STRETCH LITE](https://downloads.raspberrypi.org/raspbian_lite_latest) version June 2018.
 
-Unzip the disk image and restore it to a microsd for raspberry pi.
+After your download is complete Unzip the disk image and restore it to a microsd for raspberry pi.
+I used disks program on ubuntu to restore the disk image.
 
 Before inserting the micro sd to your raspberry there is one more thing to do.
 
 you need to creat ssh file on sdcard's boot partition for headless raspberry pi.
 I think it's more convenient than connecting it to monitor and keyboard.
-
+you can open a terminal and go to Boot partition on sdcard and use command below to creat the file.
+'''
  $ sudo touch ssh
+'''
 
 Insert sdcard into raspberry pi.connect it to power supply and network cable and wait for it to boot.
 You can find your raspberry pis network address from your routers address list.When you find the network address make a ssh connection to it with putty or any tool you are comftable with.
