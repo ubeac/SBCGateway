@@ -1,3 +1,6 @@
+![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
+
+
 # SBCGateway
 
 ## Pre requirments
