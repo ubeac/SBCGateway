@@ -27,5 +27,5 @@ After configuring your device and editing config.ini you can run it by running a
 ```
 $ sudo python3 abcScanner.py
 ```
-For Detailed instructions on hoe to config your raspberry pi and run this project read readmeDetail.md
+For Detailed instructions on how to config your raspberry pi and run this project read readmeDetail.md
 
