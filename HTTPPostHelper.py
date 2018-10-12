@@ -4,7 +4,7 @@ import requests
 import datetime
 from uuid import getnode as get_mac
 
-class jp:
+class HTTPPostHelper:
     def __init__(self, Id, Name,PostAddress):
         self.Id = Id
         self.Name = Name
@@ -39,4 +39,5 @@ class jp:
             self.beaconData_.extend(BeaconData)
         else:
             self.beaconData_.extend(BeaconData)
+
         self.postData()

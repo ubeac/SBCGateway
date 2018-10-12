@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import blescan
-import JsonPoster
+import BluezHelper
+import HTTPPostHelper
 import datetime
 import time
 import _thread
@@ -19,25 +19,28 @@ numScans = config['scannerConfiguration']['scanBuffer']
 # shared list used to exchange Beacon scans with post thread
 returnedList =[]
 
-scanner = blescan.bs(0)
-poster = JsonPoster.jp(id, name,postAddress)
+ScanThreat = BluezHelper.BluezHelper(0)
+HttpPostThreat = HTTPPostHelper.HTTPPostHelper(id, name,postAddress)
 
 def scanProcess():
     while True:
-        returnedList.extend(scanner.doscan(numScans))
+        returnedList.extend(ScanThreat.scan(numScans))
 
 def postProcess():
     while True:
         #temporary list used for exchange
         templist = returnedList.copy()
         returnedList.clear()
-        poster.startPosting(templist)
+        try:
+            HttpPostThreat.startPosting(templist)
+        except:
+            print('couldnt post data')
         time.sleep(interval)
 
 
 try:
-   _thread.start_new_thread( scanProcess, () )
-   _thread.start_new_thread( postProcess, () )
+   _thread.start_new_thread(scanProcess, ())
+   _thread.start_new_thread(postProcess, ())
 except:
    print ("Error: unable to start thread")
 

@@ -5,7 +5,7 @@ import struct
 import bluetooth._bluetooth as bluez
 import datetime
 
-class bs:
+class BluezHelper:
     def __init__(self,dev_id = 0):
 
         self.LE_META_EVENT = 0x3e
@@ -155,5 +155,5 @@ class bs:
         return myFullList
 
 
-    def doscan(self,numberOfScannes=1):
+    def scan(self,numberOfScannes=1):
         return self.parse_events(self.sock, numberOfScannes)
