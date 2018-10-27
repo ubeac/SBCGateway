@@ -14,8 +14,8 @@ config.read('config.ini')
 postAddress = config['serverConfigurations']['postAddress']
 id = config['GatewayConfiguration']['id']
 name = config['GatewayConfiguration']['name']
-interval =config['GatewayConfiguration']['PostInterval']
-numScans = config['scannerConfiguration']['scanBuffer']
+interval = int(config['GatewayConfiguration']['PostInterval'])
+numScans = int(config['scannerConfiguration']['scanBuffer'])
 # shared list used to exchange Beacon scans with post thread
 returnedList =[]
 
