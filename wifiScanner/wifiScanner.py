@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import BluezHelper
+import WiFiHelper
 import HTTPPostHelper
 import datetime
 import time
@@ -15,16 +15,15 @@ postAddress = config['serverConfigurations']['postAddress']
 id = config['GatewayConfiguration']['id']
 name = config['GatewayConfiguration']['name']
 interval = int(config['GatewayConfiguration']['PostInterval'])
-numScans = int(config['scannerConfiguration']['scanBuffer'])
+interface = config['scannerConfiguration']['interface']
 # shared list used to exchange Beacon scans with post thread
 returnedList =[]
 
-ScanThreat = BluezHelper.BluezHelper(0)
-HttpPostThreat = HTTPPostHelper.HTTPPostHelper(id, name,postAddress)
+ScanThreat = WiFiHelper.WiFiHelper(returnedList, interface)
+HttpPostThreat = HTTPPostHelper.HTTPPostHelper(id, name, postAddress)
 
 def scanProcess():
-    while True:
-        returnedList.extend(ScanThreat.scan(numScans))
+    ScanThreat.scan()
 
 def postProcess():
     while True:
@@ -41,6 +40,7 @@ def postProcess():
 try:
    _thread.start_new_thread(scanProcess, ())
    _thread.start_new_thread(postProcess, ())
+
 except:
    print ("Error: unable to start thread")
 

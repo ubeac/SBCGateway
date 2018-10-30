@@ -5,7 +5,7 @@ import struct
 import bluetooth._bluetooth as bluez
 import datetime
 
-class BluezHelper:
+class BleHelper:
     def __init__(self,dev_id = 0):
 
         self.LE_META_EVENT = 0x3e
@@ -42,7 +42,6 @@ class BluezHelper:
 
         self.hci_le_set_scan_parameters(self.sock)
         self.hci_enable_le_scan(self.sock)
-
 
 
     def returnnumberpacket(self, pkt):
@@ -147,7 +146,7 @@ class BluezHelper:
                     num_reports =  pkt[0]
                     report_pkt_offset = 0
                     for i in range(0, num_reports):
-                        myFullList.append([pkt.hex(),str(datetime.datetime.utcnow())])
+                        myFullList.append({"data": pkt.hex(), "ts": str(datetime.datetime.utcnow())})
 
                     done = True
         sock.setsockopt(bluez.SOL_HCI, bluez.HCI_FILTER, old_filter)
@@ -157,3 +156,18 @@ class BluezHelper:
 
     def scan(self,numberOfScannes=1):
         return self.parse_events(self.sock, numberOfScannes)
+
+#testing the helper class and write results to ble.txt
+if __name__ == '__main__':
+    bleScanner = BleHelper()
+    f = open("ble.txt","w")
+    f.write('Data;time stamp UTC\r\n')
+    f.close()
+
+    while True:
+        res = bleScanner.scan(1)
+        f = open("ble.txt", "a+")
+        for dev in res:
+            f.write(str(dev[0]) +";"+ str(dev[1])+"\r\n")
+        f.close()
+
