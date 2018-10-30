@@ -168,6 +168,6 @@ if __name__ == '__main__':
         res = bleScanner.scan(1)
         f = open("ble.txt", "a+")
         for dev in res:
-            f.write(str(dev[0]) +";"+ str(dev[1])+"\r\n")
+            f.write(str(dev["data"]) + ";" + str(dev["ts"])+"\r\n")
         f.close()
 

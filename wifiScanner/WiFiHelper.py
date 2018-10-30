@@ -32,6 +32,6 @@ if __name__ == '__main__':
         resultList.clear()
         f = open("probes.txt", "a+")
         for probe in tempResult:
-            f.write(probe[0] + ';' + probe[1] + ';' + probe[2] + ';' + probe[3] + '\r\n')
+            f.write(probe["mac"] + ';' + probe["channel"] + ';' + probe["signal"] + ';' + probe["ts"] + '\r\n')
         f.close()
         time.sleep(1)
