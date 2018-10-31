@@ -12,10 +12,11 @@ This project contains these different scanner programs you can use together or s
 ## Getting started
 
 For running this project you will need a fresh installation of [raspbian lite](https://www.raspberrypi.org/downloads/raspbian/) on a Bluetooth and WIFI enabled [RaspberryPi](https://www.raspberrypi.org/products/).
-You need to have [python 3](https://www.python.org/) and [requests](http://docs.python-requests.org/en/master/).
-For BT and BLE scanner you will need [pybluez](https://github.com/pybluez/pybluez).
-For WIFI scanner you will need [scappy](https://scapy.net/).
+
+* You need to have [python 3](https://www.python.org/) and [requests](http://docs.python-requests.org/en/master/).
+* For BT and BLE scanner you will need [pybluez](https://github.com/pybluez/pybluez).
+* For WIFI scanner you will need [scappy](https://scapy.net/).
 
 You can get projects from our [Git Repository](https://github.com/ubeac/SBCGateway)
 
-For instructions on how to configure and run each project refer to the readme file in their own project folder.
+For instructions on how to configure and run each project refer to the readme file in their own folder.
