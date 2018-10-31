@@ -10,6 +10,22 @@ You need to have [python 3](https://www.python.org/), [pybluez](https://github.c
 
 You can get the project from our [Git Repository](https://github.com/ubeac/SBCGateway)
 
+### Installation
+
+For preparing RaspberryPi to run the project you can run the following commands.
+
+```
+$ sudo apt-get update
+$ sudo apt-get upgrade
+
+$ sudo apt-get install python3 python-pip python-dev ipython
+$ sudo apt-get install bluetooth libbluetooth-dev
+$ sudo pip install pybluez
+
+$ sudo pip install requests
+
+```
+
 ### Config.ini
 *postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 

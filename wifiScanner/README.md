@@ -14,6 +14,41 @@ You need to have :
 
 You can get the project from our [Git Repository](https://github.com/ubeac/SBCGateway)
 
+### Installation
+
+For preparing RaspberryPi to run the project you can run the following commands.
+
+```
+$ sudo apt-get update
+$ sudo apt-get upgrade
+
+$ sudo apt-get install python3 python-pip python-dev ipython
+$ sudo apt-get install bluetooth libbluetooth-dev
+$ sudo pip install scapy
+
+$ sudo pip install requests
+
+```
+
+For putting wifi in monitor mode you can use following commands.
+
+```
+
+$ sudo ifconfig wlan0 down
+$ sudo iwconfig wlan0 mode monitor
+$ sudo ifconfig wlan0 up
+$ sudo iwconfig wlan0
+
+```
+
+Remember for the project to be able to run you must have a wifi adapter with monitor capabilities, not every wifi can do this. I leave some links to known ones.
+
+[Buy the Best Wireless Network Adapter for Wi-Fi Hacking in 2018](https://null-byte.wonderhowto.com/how-to/buy-best-wireless-network-adapter-for-wi-fi-hacking-2018-0178550/).
+
+[Best Compatible USB Wireless Adapter for BackTrack 5, Kali Linux and Aircrack-ng](https://www.raymond.cc/blog/best-compatible-usb-wireless-adapter-for-backtrack-5-and-aircrack-ng/)
+
+[TP-link TL-WN722N](https://www.tp-link.com/us/products/details/cat-5520_TL-WN722N.html) is the one I am using. If you can get the v1.0 it will work out of the box but mine is v2.0 and it was really tricky to make it work and put it in monitor mode.
+
 ### Config.ini
 *postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 
