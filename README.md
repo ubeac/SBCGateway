@@ -1,31 +1,21 @@
 ![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
 
 # SBCGateway
-This is a gateway for ubeac project.
-It will Scan for **[ble advertisements](https://en.wikipedia.org/wiki/Bluetooth_advertising)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
+
+This is a gateway for the ubeac project.
+This project contains these different scanner programs you can use together or separately.
+
+* **[BLE scanner](https://github.com/ubeac/SBCGateway/tree/master/bleScanner)** which listens for **[ble advertisements](https://en.wikipedia.org/wiki/Bluetooth_advertising)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
+* **[BT scanner](https://github.com/ubeac/SBCGateway/tree/master/btScanner)** which scans for **[bluetooth inquiry](https://essay.utwente.nl/59681/1/MA_scriptie_A_Franssens.pdf)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
+* **[WIFI scanner](https://github.com/ubeac/SBCGateway/tree/master/wifiScanner)** which listens for **[wifi probe requests](https://www.cisco.com/c/en/us/td/docs/solutions/Enterprise/Borderless_Networks/Unified_Access/CMX/CMX_802Fund.pdf)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
 
 ## Getting started
-For running this project you will need a fresh installation of [raspbian lite](https://www.raspberrypi.org/downloads/raspbian/) on Bluetooth enable [RaspberryPi](https://www.raspberrypi.org/products/).
-You need to have [python 3](https://www.python.org/), [pybluez](https://github.com/pybluez/pybluez) and [requests](http://docs.python-requests.org/en/master/).
 
-You can get the project from our [Git Repository](https://github.com/ubeac/SBCGateway)
+For running this project you will need a fresh installation of [raspbian lite](https://www.raspberrypi.org/downloads/raspbian/) on a Bluetooth and WIFI enabled [RaspberryPi](https://www.raspberrypi.org/products/).
+You need to have [python 3](https://www.python.org/) and [requests](http://docs.python-requests.org/en/master/).
+For BT and BLE scanner you will need [pybluez](https://github.com/pybluez/pybluez).
+For WIFI scanner you will need [scappy](https://scapy.net/).
 
-### Config.ini
-postAddress is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
+You can get projects from our [Git Repository](https://github.com/ubeac/SBCGateway)
 
-Set the id and name as you want.
-
-postInterval is the time laps between posts to the ubeac server.It's in seconds and you can set it to less than a second by providing a decimal.
-
-scanBuffer is the amount of scans beacon scanner do before sending data to post thread minimum number is 1 and you can set it to 100 if you are posting data to server slowly.
-
-If the scanBuffer is to much higher than postIntervals you will end up with some empty posts.
-
-### Running The project
-
-After configuring your device and editing config.ini you can run it by running abcScanner.py as **root**
-```
-$ sudo python3 sbcScanner.py
-```
-For Detailed instructions on how to config your raspberry pi and run this project read [readmeDetail.md](https://github.com/ubeac/SBCGateway/blob/master/readmeDetail.md)
-
+For instructions on how to configure and run each project refer to the readme file in their own project folder.
