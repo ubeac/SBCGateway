@@ -1,7 +1,7 @@
 ![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
 
 # BLE Scanner
-This is a gateway for ubeac project.
+This is a gateway for the ubeac project.
 It will Scan for **[ble advertisements](https://en.wikipedia.org/wiki/Bluetooth_advertising)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
 
 ## Getting started
@@ -11,21 +11,29 @@ You need to have [python 3](https://www.python.org/), [pybluez](https://github.c
 You can get the project from our [Git Repository](https://github.com/ubeac/SBCGateway)
 
 ### Config.ini
-postAddress is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
+*postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 
-Set the id and name as you want.
+Set the *id* and *name* as you want.
 
-postInterval is the time laps between posts to the ubeac server.It's in seconds and you can set it to less than a second by providing a decimal.
+*postinterval* is the time lapse between posts to the ubeac server. It's in **seconds** and you can set it to less than a second by providing a decimal.
 
-scanBuffer is the amount of scans beacon scanner do before sending data to post thread minimum number is 1 and you can set it to 100 if you are posting data to server slowly.
+*scanBuffer* is the amount of scans beacon scanner do before sending data to post thread minimum number is 1 and you can set it to 100 if you are posting data to server slowly.
 
-If the scanBuffer is to much higher than postIntervals you will end up with some empty posts.
+If the *scanBuffer* is too much higher than *postInterval* you will end up with some empty posts.
 
 ### Running The project
 
 After configuring your device and editing config.ini you can run it by running bleScanenr.py as **root**
+
 ```
 $ sudo python3 bleScanner.py
 ```
-For Detailed instructions on how to config your raspberry pi and run this project read [readmeDetail.md](https://github.com/ubeac/SBCGateway/blob/master/bleScanner/readmeDetail.md)
+
+For running the project locally you can run BleHelper.py as **root**. This will start scanner but instead of sending data to ubeac servers it will write scans to ble.txt.
+
+```
+$ sudo python3 BleHelper.py
+```
+
+For detailed instructions on how to config your raspberry pi and run this project read [readmeDetail.md](https://github.com/ubeac/SBCGateway/blob/master/bleScanner/readmeDetail.md)
 

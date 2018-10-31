@@ -1,6 +1,6 @@
 ![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
 
-# SBCGateway
+# BLE Scanner
 Python gateway for ubeac service.
 
 This a project to provide a gateway for bluetooth beacons to work with [uBeac](http://ui.ubeac.io) .At present it runs on linux only.I've mostly developed it using Raspberry pi, but it will also run on linux based systems.
@@ -153,11 +153,11 @@ If the scanBuffer is to much higher than postIntervals you will end up with some
 
 ## Running The project
 
-After configuring your device and editing config.ini you can run project by running bstest.py as root
+After configuring your device and editing config.ini you can run project by running bleScanner.py as root
 ```
-$ sudo python3 BSTest.py
+$ sudo python3 bleScanner.py
 ```
 
-you can run BSTest.py as startup script so anytime you turn on your device it will start scanning and sending data to ubeacserver.I will live a link to structions for doing so.
+you can run bleScanner.py as startup script so anytime you turn on your device it will start scanning and sending data to ubeacserver.I will live a link to structions for doing so.
 
 [Five Ways To Run a Program On Your Raspberry Pi At Startup](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
