@@ -1,6 +1,6 @@
 ![Logo of the project](http://ui.ubeac.io/static/img/logo.svg)
 
-# SBCGateway
+# BLE Scanner
 This is a gateway for ubeac project.
 It will Scan for **[ble advertisements](https://en.wikipedia.org/wiki/Bluetooth_advertising)** and send them to **[ubeac](http://ui.ubeac.io)** servers.
 
@@ -23,9 +23,9 @@ If the scanBuffer is to much higher than postIntervals you will end up with some
 
 ### Running The project
 
-After configuring your device and editing config.ini you can run it by running abcScanner.py as **root**
+After configuring your device and editing config.ini you can run it by running bleScanenr.py as **root**
 ```
-$ sudo python3 sbcScanner.py
+$ sudo python3 bleScanner.py
 ```
-For Detailed instructions on how to config your raspberry pi and run this project read [readmeDetail.md](https://github.com/ubeac/SBCGateway/blob/master/readmeDetail.md)
+For Detailed instructions on how to config your raspberry pi and run this project read [readmeDetail.md](https://github.com/ubeac/SBCGateway/blob/master/bleScanner/readmeDetail.md)
 
