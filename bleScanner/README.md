@@ -25,6 +25,18 @@ $ sudo pip install pybluez
 $ sudo pip install requests
 
 ```
+You can download this program with the following commands or you can clone the repository to your raspberry.
+
+```
+$ mkdir blescanner
+$ cd blescanner
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/BleHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/HTTPPostHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/README.md
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/bleScanner.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/config.ini
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/bleScanner/readmeDetail.md
+```
 
 ### Config.ini
 *postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).

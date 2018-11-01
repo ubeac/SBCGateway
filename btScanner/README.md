@@ -26,6 +26,19 @@ $ sudo pip install requests
 
 ```
 
+You can download this program with the following commands or you can clone the repository to your raspberry.
+
+```
+$ mkdir btscanner
+$ cd btscanner
+
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/btScanner/HTTPPostHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/btScanner/InqueryHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/btScanner/README.md
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/btScanner/btScanner.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/btScanner/config.ini
+```
+
 ### Config.ini
 *postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 

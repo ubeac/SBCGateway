@@ -49,6 +49,20 @@ Remember for the project to be able to run you must have a wifi adapter with mon
 
 [TP-link TL-WN722N](https://www.tp-link.com/us/products/details/cat-5520_TL-WN722N.html) is the one I am using. If you can get the v1.0 it will work out of the box but mine is v2.0 and it was really tricky to make it work and put it in monitor mode.
 
+You can download this program with the following commands or you can clone the repository to your raspberry.
+
+```
+$ mkdir wifiscanner
+$ cd wifiscanner
+
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/HTTPPostHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/README.md
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/WiFiHelper.py
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/config.ini
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/mon.sh
+$ wget https://raw.githubusercontent.com/ubeac/SBCGateway/master/wifiScanner/wifiScanner.py
+```
+
 ### Config.ini
 *postAddress* is the link to the listener provided from [ubeac](http://ui.ubeac.io) or for debug you can use [HookServer](http://hook.ubeac.io).
 
