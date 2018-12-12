@@ -13,25 +13,29 @@ class InqueryHelper:
     def __init__(self,dev_id=0):
         self.dev_id = dev_id
         self.sock = ''
+        self._check_bt_device()
+        self._check_inquery
+
+    def _check_bt_device(self):
         try:
             self.sock = bluez.hci_open_dev(self.dev_id)
         except:
             print("error accessing bluetooth device...")
             sys.exit(1)
 
+    def _check_inquery(self):
         try:
-            mode = self.read_inquiry_mode(self.sock)
+            mode = self._read_inquiry_mode(self.sock)
         except Exception as e:
             print("error reading inquiry mode.  ")
             print("Are you sure this a bluetooth 1.2 device?")
             print(e)
             sys.exit(1)
         print("current inquiry mode is %d" % mode)
-
         if mode != 1:
             print("writing inquiry mode...")
             try:
-                result = self.write_inquiry_mode(self.sock, 1)
+                result = self._write_inquiry_mode(self.sock, 1)
             except Exception as e:
                 print("error writing inquiry mode.  Are you sure you're root?")
                 print(e)
@@ -40,14 +44,13 @@ class InqueryHelper:
                 print("error while setting inquiry mode")
             print("result: %d" % result)
 
-
-    def printpacket(self,pkt):
+    def _print_packet(self,pkt):
         for c in pkt:
             sys.stdout.write("%02x " % struct.unpack("B",c)[0])
         print()
 
 
-    def read_inquiry_mode(self,sock):
+    def _read_inquiry_mode(self,sock):
         """returns the current mode, or -1 on failure"""
         # save current filter
         old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
@@ -56,15 +59,15 @@ class InqueryHelper:
         # read_inquiry_mode command
         flt = bluez.hci_filter_new()
         opcode = bluez.cmd_opcode_pack(bluez.OGF_HOST_CTL,
-                bluez.OCF_READ_INQUIRY_MODE)
+                bluez.OCF_read_inquiry_mode)
         bluez.hci_filter_set_ptype(flt, bluez.HCI_EVENT_PKT)
-        bluez.hci_filter_set_event(flt, bluez.EVT_CMD_COMPLETE);
+        bluez.hci_filter_set_event(flt, bluez.EVT_CMD_COMPLETE)
         bluez.hci_filter_set_opcode(flt, opcode)
         sock.setsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, flt )
 
         # first read the current inquiry mode.
         bluez.hci_send_cmd(sock, bluez.OGF_HOST_CTL,
-                bluez.OCF_READ_INQUIRY_MODE )
+                bluez.OCF_read_inquiry_mode )
 
         pkt = sock.recv(255)
 
@@ -75,7 +78,7 @@ class InqueryHelper:
         sock.setsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, old_filter )
         return mode
 
-    def write_inquiry_mode(self,sock, mode):
+    def _write_inquiry_mode(self,sock, mode):
         """returns 0 on success, -1 on failure"""
         # save current filter
         old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
@@ -84,7 +87,7 @@ class InqueryHelper:
         # write_inquiry_mode command
         flt = bluez.hci_filter_new()
         opcode = bluez.cmd_opcode_pack(bluez.OGF_HOST_CTL,
-                bluez.OCF_WRITE_INQUIRY_MODE)
+                bluez.OCF_write_inquiry_mode)
         bluez.hci_filter_set_ptype(flt, bluez.HCI_EVENT_PKT)
         bluez.hci_filter_set_event(flt, bluez.EVT_CMD_COMPLETE)
         bluez.hci_filter_set_opcode(flt, opcode)
@@ -92,7 +95,7 @@ class InqueryHelper:
 
         # send the command!
         bluez.hci_send_cmd(sock, bluez.OGF_HOST_CTL,
-                bluez.OCF_WRITE_INQUIRY_MODE, struct.pack("B", mode))
+                bluez.OCF_write_inquiry_mode, struct.pack("B", mode))
 
         pkt = sock.recv(255)
 
@@ -103,7 +106,8 @@ class InqueryHelper:
         if status != 0: return -1
         return 0
 
-    def device_inquiry_with_with_rssi(self,sock):
+    def _device_inquiry_with_with_rssi(self,sock):
+        """inquiry blutooth devices with rssi"""
         # save current filter
         old_filter = sock.getsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, 14)
 
@@ -142,7 +146,7 @@ class InqueryHelper:
                 status, ncmd, opcode = struct.unpack("BBH", pkt[3:7])
                 if status != 0:
                     print("uh oh...")
-                    self.printpacket(pkt[3:7])
+                    self._print_packet(pkt[3:7])
                     done = True
             elif event == bluez.EVT_INQUIRY_RESULT:
                 pkt = pkt[3:]
@@ -160,10 +164,11 @@ class InqueryHelper:
         return results
 
     def scan(self):
-        # scan for bluetooth device names
-        inquryResult = self.device_inquiry_with_with_rssi(self.sock)
+        """scan and return inquiry bt devices"""
+        inquryResult = self._device_inquiry_with_with_rssi(self.sock)
         results = []
         for device in inquryResult:
+            # scan for bluetooth device names
             name = bluetooth.lookup_name(device[0], 10)
             results.append({"mac": device[0], "rssi": device[1], "name": name, "ts": device[2]})
         return results

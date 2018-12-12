@@ -14,7 +14,7 @@ config.read('config.ini')
 postAddress = config['serverConfigurations']['postAddress']
 id = config['GatewayConfiguration']['id']
 name = config['GatewayConfiguration']['name']
-interval = int(config['GatewayConfiguration']['PostInterval'])
+postInterval = int(config['GatewayConfiguration']['PostInterval'])
 
 # shared list used to exchange Beacon scans with post thread
 returnedList =[]
@@ -22,27 +22,31 @@ returnedList =[]
 ScanThreat = InqueryHelper.InqueryHelper(0)
 HttpPostThreat = HTTPPostHelper.HTTPPostHelper(id, name,postAddress)
 
-def scanProcess():
+def scan_process():
     while True:
         returnedList.extend(ScanThreat.scan())
 
-def postProcess():
+def post_process():
     while True:
         #temporary list used for exchange
         templist = returnedList.copy()
         returnedList.clear()
         try:
-            HttpPostThreat.startPosting(templist)
+            HttpPostThreat.start_posting(templist)
         except:
-            print('couldnt post data')
-        time.sleep(interval)
+            print("couldn't post data")
+        time.sleep(postInterval)
 
 
 try:
-   _thread.start_new_thread(scanProcess, ())
-   _thread.start_new_thread(postProcess, ())
-except:
-   print ("Error: unable to start thread")
+   _thread.start_new_thread(scan_process, ())
+   _thread.start_new_thread(post_process, ())
+except Exception as e:
+   print("Error: unable to start thread")
+   print(e)
+   sys.exit(1)
+
 
 while True:
+    """keep the program running"""
    pass

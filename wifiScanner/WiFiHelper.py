@@ -11,12 +11,15 @@ class WiFiHelper:
         self.interface = interface
 
     #this function will be called every time a packet recived
-    def PacketHandler(self,pkt):
+    def _packet_scan_data(self,pkt):
+        """format and append scan data to result list"""
+        #packet type 0 and subtype 4 is a probe request
         if pkt.type==0 and pkt.subtype==4:
             self.results.append({"mac": str(pkt.addr2), "channel": str(pkt.Channel), "signal": str(pkt.dBm_AntSignal), "ts": str(datetime.datetime.utcnow())})
 
     def scan(self):
-        sniff(iface=self.interface, prn=self.PacketHandler, store=0)
+        """starts sniffing for wifi probes"""
+        sniff(iface=self.interface, prn=self._packet_scan_data, store=0)
 
 # testing wifi helper by writing results to probes.txt
 if __name__ == '__main__':
